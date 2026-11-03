@@ -1,5 +1,6 @@
 // 1. VARIABLES 
-let Cliente = "juan_perez";
+// Añadimos espacios para probar 'trim'
+let Cliente = "   juan_perez   "; 
 let codigoCupon = "PROMO2026";
 let precio = 500;
 
@@ -9,10 +10,13 @@ let totalFinal = subtotal - 100; // Resta directa
 
 
 // 3. MÉTODOS DE STRINGS
-// split: Corta el texto en el guion bajo "_"
-let partes = Cliente.split("_"); 
-let nombre = partes[0];    // Juan 
-let apellido = partes[1];  // Perez 
+// trim: Elimina los espacios vacíos del inicio y del final
+let clienteLimpio = Cliente.trim(); 
+
+// split: Corta el texto limpio en el guion bajo "_"
+let partes = clienteLimpio.split("_"); 
+let nombre = partes[0];    // juan 
+let apellido = partes[1];  // perez 
 
 // toUpperCase y toLowerCase: Mayúsculas y minúsculas
 let nombreMayuscula = nombre.toUpperCase(); 
@@ -28,6 +32,10 @@ let resto = nombreMayuscula.slice(1);
 let empiezaConPromo = codigoCupon.startsWith("PROMO"); 
 let terminaEn2026 = codigoCupon.endsWith("2026"); 
 
+// replace: Cambia el año del cupón por el próximo año para mostrarlo en el mensaje
+let cuponSiguienteAnio = codigoCupon.replace("2026", "2027");
+
+
 // 4. TEMPLATE LITERALS 
 let mensaje = `
 ----- DATOS DEL CLIENTE -----
@@ -38,6 +46,7 @@ Resto del nombre: ${resto}
 ----- DATOS DEL CUPÓN -----
 ¿El cupón empieza con PROMO?: ${empiezaConPromo}
 ¿El cupón termina en 2026?: ${terminaEn2026}
+Sugerencia para el próximo año: ${cuponSiguienteAnio}
 
 ----- TOTALES -----
 Subtotal: $${subtotal}
@@ -45,5 +54,5 @@ Descuento aplicado: -$100
 TOTAL A PAGAR: $${totalFinal}
 `;
 
-console.log(mensaje);
+console.log(mensaje); 
 
